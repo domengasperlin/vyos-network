@@ -7,7 +7,7 @@ This README shows how to build network for a company with VMware ESXi type-1 hyp
 
 ### Setup
 
-First you need to install VyOS. Then we can configure the interfaces. We can do this by running in configuration mode.
+First you need to install VyOS. Then we can configure the interfaces. Vyos has configuration and operational mode, you can only change configuration in configuration mode (configure), to save settings run commit and save.
 ``` bash
 configure
 set interfaces ethernet eth0 address '88.200.24.232/24'
