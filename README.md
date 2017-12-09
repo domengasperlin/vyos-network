@@ -42,7 +42,7 @@ set nat source rule 100 outbound-interface 'eth0'  #  For any traffic that is le
 set nat source rule 100 source address '10.2.0.0/24'
 set nat source rule 100 translation address masquerade # Change it so it appears to be coming from the IP address of the interface.
 ```
->In this example, we use masquerade as the translation address instead of an IP address. The masquerade target is effectively an alias to say "use whatever IP address is on the outgoing interface", rather than a statically configured IP address. This is useful if you use DHCP for your outgoing interface and do not know what the external address will be.
+> In this example, we use masquerade as the translation address instead of an IP address. The masquerade target is effectively an alias to say "use whatever IP address is on the outgoing interface", rather than a statically configured IP address. This is useful if you use DHCP for your outgoing interface and do not know what the external address will be.
 
 Now lets set up DHCP for users subnet.
 ``` bash
@@ -51,9 +51,8 @@ set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 default-ro
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 dns-server 10.2.0.1
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 lease 86400
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 start 10.2.0.100 stop 10.2.0.199
->set service dhcp-server shared-network-name <name> subnet <subnet> dns-server <address>. This is a configuration parameter for the subnet, saying that as part of the response, tell the client that I am the DNS server for this network. If you do not want to run a DNS server, you could also provide one of the public DNS servers, such as google's. You can add multiple entries by repeating the line.
-
 ```
+> set service dhcp-server shared-network-name <name> subnet <subnet> dns-server <address>. This is a configuration parameter for the subnet, saying that as part of the response, tell the client that I am the DNS server for this network. If you do not want to run a DNS server, you could also provide one of the public DNS servers, such as google's. You can add multiple entries by repeating the line.
 To set-up ssh run
 ``` bash
 set service ssh port 22
