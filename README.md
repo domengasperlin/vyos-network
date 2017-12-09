@@ -49,7 +49,7 @@ Now lets set up DHCP for users subnet.
 set service dhcp-server shared-network-name inside authoritative enable
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 default-router 10.2.0.1
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 dns-server 10.2.0.1
-set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 lease 86400
+set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 lease 600 # set lease time to 10 min
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 start 10.2.0.100 stop 10.2.0.199
 ```
 > set service dhcp-server shared-network-name <name> subnet <subnet> dns-server <address>. This is a configuration parameter for the subnet, saying that as part of the response, tell the client that I am the DNS server for this network. If you do not want to run a DNS server, you could also provide one of the public DNS servers, such as google's. You can add multiple entries by repeating the line.
