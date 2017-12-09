@@ -27,7 +27,7 @@ To reach outside network e.g google dns server from router we need to add static
 set protocols static route 0.0.0.0/0 next-hop 88.200.24.1 distance '1'
 set protocols static route6 ::/0 next-hop 2001:1470:fffd:84::1 distance '1'
 ```
-To configure DNS with caching for employees and vyos disabled run
+To configure DNS with caching disabled for employees subnet and vyos
 ``` bash
 set service dns forwarding name-server 8.8.8.8 # google dns server
 set service dns forwarding name-server 193.2.1.66 # arnes dns server
