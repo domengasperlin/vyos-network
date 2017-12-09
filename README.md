@@ -17,7 +17,7 @@ set interfaces ethernet eth1 description 'IPv6 only'
 set interfaces ethernet eth2 address '192.168.2.1/24'
 set interfaces ethernet eth2 description 'DMZ zone'
 set interfaces ethernet eth3 address '10.2.0.1/24'
-set interfaces ethernet eth2 description 'Employees'
+set interfaces ethernet eth3 description 'Employees'
 commit
 save
 ```
