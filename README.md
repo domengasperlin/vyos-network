@@ -34,6 +34,7 @@ set service dns forwarding name-server 193.2.1.66
 set service dns forwarding cache-size 0
 set service dns forwarding listen-on eth3
 ```
+> set service dns forwarding listen-on <interface> Use this command to specify interfaces on which to listen for client DNS requests. Only queries received on interfaces specified with this command receive DNS answers. At least one interface must be specified for DNS forwarding to operate.
 
 Next lets configure NAT
 ``` bash
