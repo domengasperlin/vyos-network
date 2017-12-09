@@ -47,7 +47,7 @@ Now lets set up DHCP for users subnet.
 ``` bash
 set service dhcp-server shared-network-name inside authoritative enable
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 default-router 10.2.0.1
-set service dhcp-server shared-network-name inside subnet '10.2.0.0/24' dns-server 10.2.0.1
+set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 dns-server 10.2.0.1
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 lease 86400
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 start 10.2.0.100 stop 10.2.0.199
 ```
