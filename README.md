@@ -27,6 +27,13 @@ To reach outside network e.g google dns server from router we need to add static
 set protocols static route 0.0.0.0/0 next-hop 88.200.24.1 distance '1'
 set protocols static route6 ::/0 next-hop 2001:1470:fffd:84::1 distance '1'
 ```
+To configure DNS with caching for employees and vyos disabled run
+``` bash
+set service dns forwarding name-server 8.8.8.8
+set service dns forwarding name-server 193.2.1.66
+set service dns forwarding cache-size 0
+set service dns forwarding listen-on eth3
+```
 
 Next lets configure NAT
 ``` bash
@@ -40,6 +47,11 @@ Now lets set up DHCP for users subnet.
 ``` bash
 set service dhcp-server shared-network-name inside authoritative enable
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 default-router 10.2.0.1
+set service dhcp-server shared-network-name inside subnet '10.2.0.0/24' dns-server 10.2.0.1
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 lease 86400
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 start 10.2.0.100 stop 10.2.0.199
+```
+To set-up ssh run
+``` bash
+set service ssh port 22
 ```
