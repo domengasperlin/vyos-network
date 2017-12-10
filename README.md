@@ -57,3 +57,9 @@ To set-up ssh run
 ``` bash
 set service ssh port 22
 ```
+
+Now lets set-up NTP servers
+``` bash
+set system ntp server time.google.com
+set system ntp server pool.ntp.org  
+```
