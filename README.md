@@ -63,6 +63,6 @@ Now lets set-up NTP servers and delete default servers
 delete system ntp server 0.pool.ntp.org
 delete system ntp server 1.pool.ntp.org
 delete system ntp server 2.pool.ntp.org
-set system ntp server time.google.com
-set system ntp server pool.ntp.org  
+set system ntp server ntp1.arnes.si 
+set system ntp server ntp2.arnes.si 
 ```
