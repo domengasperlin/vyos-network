@@ -58,8 +58,11 @@ To set-up ssh run
 set service ssh port 22
 ```
 
-Now lets set-up NTP servers
+Now lets set-up NTP servers and delete default servers
 ``` bash
+delete system ntp server 0.pool.ntp.org
+delete system ntp server 1.pool.ntp.org
+delete system ntp server 2.pool.ntp.org
 set system ntp server time.google.com
 set system ntp server pool.ntp.org  
 ```
