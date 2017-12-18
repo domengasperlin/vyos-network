@@ -32,7 +32,8 @@ To configure DNS with caching disabled for employees subnet and vyos
 set service dns forwarding name-server 8.8.8.8 # google dns server
 set service dns forwarding name-server 193.2.1.66 # arnes dns server
 set service dns forwarding cache-size 0
-set service dns forwarding listen-on eth3
+set service dns forwarding listen-on eth3 # users subnet
+set service dns forwarding listen-on eth2 # dmz subnet
 ```
 > set service dns forwarding listen-on <interface> Use this command to specify interfaces on which to listen for client DNS requests. Only queries received on interfaces specified with this command receive DNS answers. At least one interface must be specified for DNS forwarding to operate.
 
@@ -52,7 +53,18 @@ set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 dns-server
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 lease 600 # set lease time to 10 min
 set service dhcp-server shared-network-name inside subnet 10.2.0.0/24 start 10.2.0.100 stop 10.2.0.199
 ```
+
 > set service dhcp-server shared-network-name <name> subnet <subnet> dns-server <address>. This is a configuration parameter for the subnet, saying that as part of the response, tell the client that I am the DNS server for this network. If you do not want to run a DNS server, you could also provide one of the public DNS servers, such as google's. You can add multiple entries by repeating the line.
+
+Now lets set up DHCP for dmz.
+``` bash
+set service dhcp-server shared-network-name dmz authoritative enable
+set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 default-router 192.168.2.1
+set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 lease 600                 
+set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 start 192.168.2.5 stop 192.168.2.155
+set service dhcp-server shared-network-name dhcpexample subnet 172.16.17.0/24 dns-server 172.16.17.1
+```
+
 To set-up ssh run
 ``` bash
 set service ssh port 22
