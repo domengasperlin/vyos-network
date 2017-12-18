@@ -62,7 +62,7 @@ set service dhcp-server shared-network-name dmz authoritative enable
 set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 default-router 192.168.2.1
 set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 lease 600                 
 set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 start 192.168.2.5 stop 192.168.2.155
-set service dhcp-server shared-network-name dhcpexample subnet 172.16.17.0/24 dns-server 172.16.17.1
+set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 dns-server 192.168.2.1
 ```
 
 To set-up ssh run
