@@ -69,6 +69,9 @@ set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 default-ro
 set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 lease 600                 
 set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 start 192.168.2.5 stop 192.168.2.155
 set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 dns-server 192.168.2.1
+# Static mapping for linux server
+set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 static-mapping linux mac-address 00:0c:29:15:6b:33
+set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 static-mapping linux ip-address 192.168.2.218
 ```
 
 To set-up ssh run
