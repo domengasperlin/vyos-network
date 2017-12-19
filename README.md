@@ -84,3 +84,11 @@ delete system ntp server 2.pool.ntp.org
 set system ntp server ntp1.arnes.si 
 set system ntp server ntp2.arnes.si 
 ```
+
+SLAAC configuration for users subnet
+``` bash
+set  interfaces ethernet eth3 ipv6 disable-forwarding 
+commit
+set interfaces ethernet eth3 ipv6 address autoconf
+commit
+```
