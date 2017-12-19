@@ -85,10 +85,9 @@ set system ntp server ntp1.arnes.si
 set system ntp server ntp2.arnes.si 
 ```
 
-SLAAC configuration for users subnet
+SLAAC configuration for users subnet to enable ping6
 ``` bash
-set  interfaces ethernet eth3 ipv6 disable-forwarding 
-commit
-set interfaces ethernet eth3 ipv6 address autoconf
-commit
+set interfaces ethernet eth3 ipv6 disable-forwarding 
+set interfaces ethernet eth3 ipv6 address autoconf 
+set interfaces ethernet eth3 ipv6 router-advert # enable RA
 ```
