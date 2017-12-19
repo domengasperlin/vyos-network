@@ -11,7 +11,7 @@ First you need to install VyOS. Then we can configure the interfaces. Vyos has c
 ``` bash
 configure
 set interfaces ethernet eth0 address '88.200.24.232/24'
-set interfaces ethernet eth0 address 2001:1470:fffd:84::2/64
+set interfaces ethernet eth0 address '2001:1470:fffd:84::2/64'
 set interfaces ethernet eth0 description 'ISP router'
 
 set interfaces ethernet eth1 address '2001:1470:fffd:85::1/64'
