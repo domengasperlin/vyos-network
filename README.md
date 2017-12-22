@@ -75,6 +75,9 @@ set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 static-map
 # Static mapping for windows
 set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 static-mapping windows10 mac-address 00:0c:29:99:0e:7d
 set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 static-mapping windows10 ip-address 192.168.2.220
+# Staic mapping for windows server
+set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 static-mapping windows-server mac-address 00:0c:29:bc:5d:8c
+set service dhcp-server shared-network-name dmz subnet 192.168.2.0/24 static-mapping windows-server ip-address 192.168.2.222
 ```
 
 To set-up ssh run
