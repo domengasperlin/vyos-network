@@ -48,6 +48,9 @@ Next lets configure NAT
 set nat source rule 100 outbound-interface 'eth0'  #  For any traffic that is leaving interface eth0
 set nat source rule 100 source address '10.2.0.0/24'
 set nat source rule 100 translation address masquerade # Change it so it appears to be coming from the IP address of the interface.
+set nat source rule 110 outbound-interface eth0
+set nat source rule 110 source address 192.168.2.0/24 # For dmz subnet
+set nat source rule 110 translation address masquerade 
 ```
 > In this example, we use masquerade as the translation address instead of an IP address. The masquerade target is effectively an alias to say "use whatever IP address is on the outgoing interface", rather than a statically configured IP address. This is useful if you use DHCP for your outgoing interface and do not know what the external address will be.
 
