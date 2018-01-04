@@ -103,3 +103,14 @@ set interfaces ethernet eth3 ipv6 disable-forwarding
 set interfaces ethernet eth3 ipv6 address autoconf 
 set interfaces ethernet eth3 ipv6 router-advert # enable RA
 ```
+
+###Active Directory
+Active Directory Domain Services (AD DC) can easily be installed through Server Manager app on Windows Server. AC DC
+installer allows for phased implementation of new features on the domain controller with its functional levels. Numerous
+functional levels such as Windows Server 2000, 2008, 2008 R2, 2012 and so on can be selected depending on the software
+used by other network components. When other computers are upgraded the functional level can be raised on the domain 
+controller to enable new and advanced features.
+
+A distinction must be made between domain functional level and domain forest functional level. Domain functional level
+specifies the domain the domain controller is in and that domain only, whereas forest specifies the functional
+level for all domains associated with the given forest.
