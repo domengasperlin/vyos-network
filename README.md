@@ -114,3 +114,9 @@ controller to enable new and advanced features.
 A distinction must be made between domain functional level and domain forest functional level. Domain functional level
 specifies the domain the domain controller is in and that domain only, whereas forest specifies the functional
 level for all domains associated with the given forest.
+
+### SNMP 
+```
+set service snmp community routers authorization ro
+set service snmp community routers network 192.168.2.0/24
+```
