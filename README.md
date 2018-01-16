@@ -120,3 +120,25 @@ level for all domains associated with the given forest.
 set service snmp community routers authorization ro
 set service snmp community routers network 192.168.2.0/24
 ```
+
+### OpenVPN
+
+The following configuration is used
+```
+openvpn vtun0 {
+     local-port 443
+     mode server
+     protocol tcp-passive
+     server {
+         subnet 10.3.0.0/24
+     }
+     tls {
+         ca-cert-file /config/auth/keys/ca.crt
+         cert-file /config/auth/keys/server.crt
+         crl-file /config/auth/keys/crl.pem
+         dh-file /config/auth/keys/dh2048.pem
+         key-file /config/auth/keys/server.key
+     }
+ }
+ ```
+
