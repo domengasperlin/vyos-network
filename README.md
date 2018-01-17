@@ -104,7 +104,7 @@ set interfaces ethernet eth3 ipv6 address autoconf
 set interfaces ethernet eth3 ipv6 router-advert # enable RA
 ```
 
-###Active Directory
+### Active Directory
 Active Directory Domain Services (AD DC) can easily be installed through Server Manager app on Windows Server. AC DC
 installer allows for phased implementation of new features on the domain controller with its functional levels. Numerous
 functional levels such as Windows Server 2000, 2008, 2008 R2, 2012 and so on can be selected depending on the software
