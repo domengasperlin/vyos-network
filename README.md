@@ -140,5 +140,18 @@ openvpn vtun0 {
          key-file /config/auth/keys/server.key
      }
  }
- ```
+```
 
+NAT
+```
+rule 35 {
+    description OpenVPN_clients
+    outbound-interface eth0
+    source {
+        address 10.3.0.0/24
+    }
+    translation {
+        address masquerade
+    }
+}
+```
