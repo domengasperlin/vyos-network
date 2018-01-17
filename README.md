@@ -155,3 +155,19 @@ rule 35 {
     }
 }
 ```
+
+Client configuration
+```
+dev tun
+client
+proto tcp
+remote 10.2.0.1 443
+persist-key
+persist-tun
+redirect-gateway def1
+dhcp-option DNS 192.168.2.222
+ca ca.crt
+cert bobdemo.crt
+key bobdemo.key
+```
+
