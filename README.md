@@ -178,12 +178,12 @@ Client configuration
 ```
 dev tun
 client
-proto tcp
-remote 10.2.0.1 443
+proto udp
+remote 88.200.24.232 443
 persist-key
 persist-tun
 redirect-gateway def1
-dhcp-option DNS 192.168.2.222
+dhcp-option DNS 8.8.8.8
 ca ca.crt
 cert bobdemo.crt
 key bobdemo.key
