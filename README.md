@@ -142,6 +142,7 @@ GET https://www.kp-company.tk:8443/v1/datum # is custom mime/type which shows cu
 ### OpenVPN
 
 The following configuration is used
+#Server configuration
 ```
 openvpn vtun0 {
      local-port 443
@@ -160,7 +161,7 @@ openvpn vtun0 {
  }
 ```
 
-NAT
+#NAT
 ```
 rule 35 {
     description OpenVPN_clients
@@ -174,7 +175,7 @@ rule 35 {
 }
 ```
 
-Client configuration
+#Client configuration
 ```
 dev tun
 client
