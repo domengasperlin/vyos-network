@@ -4,6 +4,9 @@ This README shows how to build network for a company with VMware ESXi type-1 hyp
 
 ### The network ###
 ![Topologija omrežja](docs/topology.png)  
+Our network consist of users, servers and subnet with support for only ipv6 protocol. Servers are located separately in dmz zone, because if hacker gets in we don't want to enable him to get access across our network. Router is reachable through domain name: www.kp-company.tk.
+### Configuring ipv6
+We also implemented NPTv6, which is commonly used to make transition to new ISP or merger with a new company easier, because it removes dependency on provider when using global ipv6 addresses on internal hosts. The strategy to eliminate this problem is to use ULA (Unique local addresses) inside the company and prefix translate them to globaly routable addresses. We allocated ULA addresses using statefull dhcpv6 on ipv6-only subnet. We set managed flag which tells client to obtain address from dhcpv6 server and other config flag which indicates to obtain other information (dns servers) from dhcpv6 server. On dmz and users subnets prefix was picked up from interface on which client was conencted to using SLAAC (stateless address autoconfiguration) and default gateway. The address is combination of mac-address of the client with layer 3 subnet prefix. We also set static ipv6 address to each interface on the router.
 
 ### Setup
 
@@ -116,10 +119,20 @@ specifies the domain the domain controller is in and that domain only, whereas f
 level for all domains associated with the given forest.
 
 ### SNMP 
+SNMP protocol is used for collecting information about managed devices. We decided to monitor data throughput through vyos interfaces. We enabled service with read-only privilige and community string routers. That way we exposed a lot of information thats why we restricted polling to the client ip address. 
 ```
 set service snmp community routers authorization ro
-set service snmp community routers network 192.168.2.0/24
+client 192.168.2.218
 ```
+On the client which is linux server located in dmz-zone we installed prometheus SNMP exporter which exposes information gathered from SNMP for use by the Prometheus which is time series databsae and monitoring system. For the visualisation we choose grafana, which is becoming increasingly popular with the rise in popularity of docker container technology. Grafana is platform for analitics with build in graphs. It offers numerous dashboards which are community built graphs for all kind of purposes in our case we used snmp-interface-throughput dashboard. 
+
+### REST
+Our servers in dmz offer publicly available rest endpoints and private endpoints to which you need to authorise in order to access them. Rest was built with java using KumuluzEE. Endpoints support both http and https. We also support http2, which is faster than http. We exposed folowing rest endpoints:
+GET
+https://www.kp-company.tk:8443/v1/uporabniki # is accessible to anyone
+https://www.kp-company.tk:8443/v1/uporabniki/:id # is supports content negotiation for application/json and application/xml
+https://www.kp-company.tk:8443/v1/nakupi # is accessible to only authorised users through internal network
+https://www.kp-company.tk:8443/v1/datum # is custom mime/type which shows current date and time
 
 ### OpenVPN
 
@@ -154,6 +167,7 @@ rule 35 {
         address masquerade
     }
 }
+```
 ```
 
 Client configuration
