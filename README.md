@@ -127,7 +127,7 @@ client 192.168.2.218
 On the client which is linux server located in dmz-zone we installed prometheus SNMP exporter which exposes information gathered from SNMP for use by the Prometheus which is time series databsae and monitoring system. For the visualisation we choose grafana, which is becoming increasingly popular with the rise in popularity of docker container technology. Grafana is platform for analitics with build in graphs. It offers numerous dashboards which are community built graphs for all kind of purposes in our case we used snmp-interface-throughput dashboard. 
 
 ### REST
-Our servers in dmz offer publicly available rest endpoints and private endpoints to which you need to authorise in order to access them. Servise uses postgresql database to save data. Rest was built with Java EE using KumuluzEE. Endpoints support both http and https. We also support http2, which is faster than http. We exposed folowing rest endpoints:
+Our servers in dmz offer publicly available rest endpoints and private endpoints to which you need to authorise in order to access them. Servise uses postgresql database to save data. Rest was built with Java EE using KumuluzEE. Endpoints support both http and https. We also support http2, which is faster than http. We exposed folowing rest endpoints: For ipv6 connectivity use https://[2001:1470:fffd:86:cc3c:b5aa:a912:fb47]:8443/servlet
 
 GET https://www.kp-company.tk:8443/v1/uporabniki   
 POST https://www.kp-company.tk:8443/v1/uporabniki   
