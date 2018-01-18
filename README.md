@@ -128,15 +128,16 @@ On the client which is linux server located in dmz-zone we installed prometheus 
 
 ### REST
 Our servers in dmz offer publicly available rest endpoints and private endpoints to which you need to authorise in order to access them. Servise uses postgresql database to save data. Rest was built with Java EE using KumuluzEE. Endpoints support both http and https. We also support http2, which is faster than http. We exposed folowing rest endpoints:
-GET https://www.kp-company.tk:8443/v1/uporabniki
-POST https://www.kp-company.tk:8443/v1/uporabniki
-PUT https://www.kp-company.tk:8443/v1/uporabniki/:id
-DELETE https://www.kp-company.tk:8443/v1/uporabniki/:id
-GET https://www.kp-company.tk:8443/v1/uporabniki/:id # supports content negotiation (application/json and application/xml)
+
+GET https://www.kp-company.tk:8443/v1/uporabniki   
+POST https://www.kp-company.tk:8443/v1/uporabniki   
+PUT https://www.kp-company.tk:8443/v1/uporabniki/:id   
+DELETE https://www.kp-company.tk:8443/v1/uporabniki/:id   
+GET https://www.kp-company.tk:8443/v1/uporabniki/:id # supports content negotiation (application/json and application/xml)   
 GET https://www.kp-company.tk:8443/v1/nakupi # is accessible to only authorised users through internal
-network
-POST https://www.kp-company.tk:8443/v1/nakupi
-GET https://www.kp-company.tk:8443/v1/datum # is custom mime/type which shows current date and time
+network   
+POST https://www.kp-company.tk:8443/v1/nakupi   
+GET https://www.kp-company.tk:8443/v1/datum # is custom mime/type which shows current date and time   
 
 ### OpenVPN
 
