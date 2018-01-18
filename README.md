@@ -127,12 +127,16 @@ client 192.168.2.218
 On the client which is linux server located in dmz-zone we installed prometheus SNMP exporter which exposes information gathered from SNMP for use by the Prometheus which is time series databsae and monitoring system. For the visualisation we choose grafana, which is becoming increasingly popular with the rise in popularity of docker container technology. Grafana is platform for analitics with build in graphs. It offers numerous dashboards which are community built graphs for all kind of purposes in our case we used snmp-interface-throughput dashboard. 
 
 ### REST
-Our servers in dmz offer publicly available rest endpoints and private endpoints to which you need to authorise in order to access them. Rest was built with java using KumuluzEE. Endpoints support both http and https. We also support http2, which is faster than http. We exposed folowing rest endpoints:
-GET
-https://www.kp-company.tk:8443/v1/uporabniki # is accessible to anyone
-https://www.kp-company.tk:8443/v1/uporabniki/:id # is supports content negotiation for application/json and application/xml
-https://www.kp-company.tk:8443/v1/nakupi # is accessible to only authorised users through internal network
-https://www.kp-company.tk:8443/v1/datum # is custom mime/type which shows current date and time
+Our servers in dmz offer publicly available rest endpoints and private endpoints to which you need to authorise in order to access them. Servise uses postgresql database to save data. Rest was built with Java EE using KumuluzEE. Endpoints support both http and https. We also support http2, which is faster than http. We exposed folowing rest endpoints:
+GET https://www.kp-company.tk:8443/v1/uporabniki
+POST https://www.kp-company.tk:8443/v1/uporabniki
+PUT https://www.kp-company.tk:8443/v1/uporabniki/:id
+DELETE https://www.kp-company.tk:8443/v1/uporabniki/:id
+GET https://www.kp-company.tk:8443/v1/uporabniki/:id # supports content negotiation (application/json and application/xml)
+GET https://www.kp-company.tk:8443/v1/nakupi # is accessible to only authorised users through internal
+network
+POST https://www.kp-company.tk:8443/v1/nakupi
+GET https://www.kp-company.tk:8443/v1/datum # is custom mime/type which shows current date and time
 
 ### OpenVPN
 
@@ -168,20 +172,3 @@ rule 35 {
     }
 }
 ```
-
-
-Client configuration
-```
-dev tun
-client
-proto tcp
-remote 10.2.0.1 443
-persist-key
-persist-tun
-redirect-gateway def1
-dhcp-option DNS 192.168.2.222
-ca ca.crt
-cert bobdemo.crt
-key bobdemo.key
-```
-
